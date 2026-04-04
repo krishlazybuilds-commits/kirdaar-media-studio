@@ -1343,7 +1343,7 @@ body.curtain-active {
   right: 12px;
 }
 
-/* ===== BRANDS / CLIENTS — PREMIUM MARQUEE ===== */
+/* ===== BRANDS / CLIENTS — PREMIUM STATIC GRID ===== */
 .brands-section {
   position: relative;
   max-width: 1200px;
@@ -1381,75 +1381,23 @@ body.curtain-active {
   line-height: 1.7;
 }
 
-/* ── Marquee Container ── */
-.brands-marquee {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 20px;
-  padding: 8px 0;
-}
-
-/* Edge fade masks */
-.brands-marquee::before,
-.brands-marquee::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.brands-marquee::before {
-  left: 0;
-  background: linear-gradient(90deg, #0a0a0a 0%, transparent 100%);
-}
-
-.brands-marquee::after {
-  right: 0;
-  background: linear-gradient(270deg, #0a0a0a 0%, transparent 100%);
-}
-
-/* ── Marquee Track ── */
-.brands-marquee-track {
+/* ── Static Brand Grid ── */
+.brands-grid {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  width: max-content;
-}
-
-.brands-marquee-left {
-  animation: marqueeScrollLeft 45s linear infinite;
-}
-
-.brands-marquee-right {
-  animation: marqueeScrollRight 40s linear infinite;
-}
-
-/* Pause on hover */
-.brands-marquee:hover .brands-marquee-track {
-  animation-play-state: paused;
-}
-
-@keyframes marqueeScrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marqueeScrollRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* ── Brand Chip ── */
 .brand-chip {
-  flex-shrink: 0;
   padding: 14px 28px;
   background: rgba(193, 154, 91, 0.03);
-  border: 1px solid rgba(193, 154, 91, 0.1);
+  border: 1px solid rgba(193, 154, 91, 0.10);
   border-radius: 40px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -2027,10 +1975,6 @@ body::before {
     letter-spacing: 3px;
   }
 
-  .brands-marquee::before,
-  .brands-marquee::after {
-    width: 60px;
-  }
 
   .brand-chip {
     padding: 11px 20px;
@@ -2094,9 +2038,9 @@ body::before {
     grid-template-columns: 1fr;
   }
 
-  .brands-marquee::before,
-  .brands-marquee::after {
-    width: 30px;
+
+  .brands-grid {
+    gap: 10px;
   }
 
   .brand-chip {
