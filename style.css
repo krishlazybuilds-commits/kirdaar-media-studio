@@ -2253,6 +2253,38 @@ body::before {
     font-size: 34px;
     letter-spacing: 4px;
   }
+  .wwa-hero-headline {
+    font-size: 56px;
+    letter-spacing: 6px;
+  }
+
+  .wwa-hero-sub {
+    font-size: 20px;
+    letter-spacing: 5px;
+  }
+
+  .wwa-editorial {
+    gap: 0;
+  }
+
+  .wwa-editorial-left,
+  .wwa-editorial-right {
+    padding: 24px 32px;
+  }
+
+  .wwa-editorial-text {
+    font-size: 16px;
+  }
+
+  .wwa-features {
+    gap: 20px;
+  }
+
+  .creators-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -2401,6 +2433,70 @@ body::before {
     font-size: 16px;
     letter-spacing: 5px;
   }
+  .wwa-hero-headline {
+    font-size: 40px;
+    letter-spacing: 4px;
+  }
+
+  .wwa-hero-sub {
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
+
+  .wwa-quote-deco {
+    font-size: 90px;
+  }
+
+  .wwa-editorial {
+    grid-template-columns: 1fr;
+    margin-bottom: 50px;
+  }
+
+  .wwa-editorial::before {
+    display: none;
+  }
+
+  .wwa-editorial-left,
+  .wwa-editorial-right {
+    padding: 20px 0;
+  }
+
+  .wwa-editorial-text {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .wwa-features {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .wwa-feature {
+    padding: 28px 24px;
+  }
+
+  .creators-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .creator-card {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .creator-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .creator-name {
+    font-size: 12px;
+  }
+
+  .creator-handle {
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2458,5 +2554,61 @@ body::before {
   .ad-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+  .wwa-hero-headline {
+    font-size: 32px;
+    letter-spacing: 3px;
+  }
+
+  .wwa-hero-sub {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+
+  .wwa-hero-quote-inner {
+    padding: 40px 16px 32px;
+  }
+
+  .wwa-quote-deco {
+    font-size: 70px;
+    top: -10px;
+  }
+
+  .wwa-editorial-text {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .wwa-feature-content h3 {
+    font-size: 16px;
+  }
+
+  .wwa-feature-content p {
+    font-size: 13px;
+  }
+
+  .creators-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .creator-card {
+    padding: 12px 12px;
+    gap: 8px;
+  }
+
+  .creator-avatar {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+
+  .creator-name {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  .creator-handle {
+    font-size: 9px;
   }
 }
