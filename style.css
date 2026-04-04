@@ -774,7 +774,7 @@ body.curtain-active {
   max-width: 1200px;
   margin: 0 auto;
   padding: 100px 40px 80px;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .ad-container {
