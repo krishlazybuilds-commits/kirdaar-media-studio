@@ -416,8 +416,8 @@ body.curtain-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 20px 8px;
-  line-height: 1;
+  padding: 8px 20px;
+  line-height: 1.1;
   border: 1px solid rgba(193, 154, 91, 0.25);
   border-radius: 20px;
   margin-bottom: 20px;
@@ -645,8 +645,8 @@ body.curtain-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9.5px 18px 8px;
-  line-height: 1;
+  padding: 8px 18px;
+  line-height: 1.1;
   border: 1px solid rgba(193, 154, 91, 0.25);
   border-radius: 20px;
   margin-bottom: 20px;
@@ -1417,8 +1417,8 @@ body.curtain-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 7.5px 16px 6px;
-  line-height: 1;
+  padding: 7px 16px;
+  line-height: 1.1;
   border: 1px solid rgba(193, 154, 91, 0.25);
   border-radius: 20px;
   width: fit-content;
