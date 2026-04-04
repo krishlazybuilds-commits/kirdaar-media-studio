@@ -401,8 +401,11 @@ body.curtain-active {
   letter-spacing: 4px;
   text-transform: uppercase;
   color: #c19a5b;
-  display: inline-block;
-  padding: 6px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  line-height: 1;
   border: 1px solid rgba(193, 154, 91, 0.25);
   border-radius: 20px;
   margin-bottom: 20px;
