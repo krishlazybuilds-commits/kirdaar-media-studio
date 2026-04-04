@@ -1745,6 +1745,102 @@ body.curtain-active {
   color: rgba(240, 230, 214, 0.35);
 }
 
+/* ===== CREATORS WORKED WITH ===== */
+.creators-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(193, 154, 91, 0.25), transparent);
+  margin: 60px auto;
+}
+
+.creators-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.creator-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(193, 154, 91, 0.03);
+  border: 1px solid rgba(193, 154, 91, 0.08);
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: default;
+  text-decoration: none;
+}
+
+a.creator-card {
+  cursor: pointer;
+}
+
+.creator-card:hover {
+  background: rgba(193, 154, 91, 0.07);
+  border-color: rgba(193, 154, 91, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 15px rgba(193, 154, 91, 0.05);
+}
+
+.creator-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(193, 154, 91, 0.08);
+  border: 1px solid rgba(193, 154, 91, 0.15);
+  color: #c19a5b;
+}
+
+.creator-card:hover .creator-avatar {
+  background: rgba(193, 154, 91, 0.15);
+  border-color: rgba(193, 154, 91, 0.35);
+}
+
+.creator-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.creator-name {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: rgba(240, 230, 214, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.creator-handle {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(193, 154, 91, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.creator-card:hover .creator-name {
+  color: #f0e6d6;
+}
+
+.creator-card:hover .creator-handle {
+  color: rgba(193, 154, 91, 0.8);
+}
+
 /* ===== CONTACT / GET IN TOUCH ===== */
 .contact-section {
   position: relative;
@@ -2325,6 +2421,11 @@ body::before {
     padding: 10px 16px;
     font-size: 11px;
     letter-spacing: 1.5px;
+  }
+
+  .creators-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .brands-count-num {
