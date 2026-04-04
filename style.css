@@ -1803,6 +1803,13 @@ a.creator-card {
   border-color: rgba(193, 154, 91, 0.35);
 }
 
+.creator-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .creator-info {
   display: flex;
   flex-direction: column;
