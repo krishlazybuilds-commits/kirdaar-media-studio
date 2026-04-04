@@ -1644,61 +1644,54 @@ body.curtain-active {
   line-height: 1.7;
 }
 
-/* ── Static Brand Grid ── */
-.brands-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
+/* ── Brand Logo Wall ── */
+.brand-wall {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* ── Brand Chip ── */
-.brand-chip {
-  display: inline-flex;
+.brand-logo-item {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 28px 13px;
-  line-height: 1;
-  background: rgba(193, 154, 91, 0.03);
-  border: 1px solid rgba(193, 154, 91, 0.10);
-  border-radius: 40px;
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(240, 230, 214, 0.5);
-  white-space: nowrap;
-  cursor: default;
+  padding: 32px 20px;
+  background: rgba(193, 154, 91, 0.02);
+  border: 1px solid rgba(193, 154, 91, 0.06);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
+  cursor: default;
 }
 
-/* Subtle glow background on hover */
-.brand-chip::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(193, 154, 91, 0.1) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.brand-chip:hover {
-  color: #c19a5b;
-  border-color: rgba(193, 154, 91, 0.35);
+.brand-logo-item:hover {
   background: rgba(193, 154, 91, 0.06);
-  transform: translateY(-3px) scale(1.04);
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(193, 154, 91, 0.06);
+  border-color: rgba(193, 154, 91, 0.15);
 }
 
-.brand-chip:hover::before {
-  opacity: 1;
+.brand-logo-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(240, 230, 214, 0.45);
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.4s ease;
+}
+
+.brand-logo-item:hover .brand-logo-text {
+  color: rgba(240, 230, 214, 0.8);
+}
+
+.brand-highlight {
+  color: rgba(193, 154, 91, 0.55);
+  font-weight: 400;
+}
+
+.brand-logo-item:hover .brand-highlight {
+  color: #c19a5b;
 }
 
 /* ── Brand Count Footer ── */
@@ -2350,10 +2343,8 @@ body::before {
   }
 
 
-  .brand-chip {
-    padding: 11px 20px;
-    font-size: 12px;
-    letter-spacing: 2px;
+  .brand-wall {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .contact-heading {
@@ -2413,13 +2404,12 @@ body::before {
   }
 
 
-  .brands-grid {
-    gap: 10px;
+  .brand-wall {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .brand-chip {
-    padding: 10px 16px;
-    font-size: 11px;
+  .brand-logo-text {
+    font-size: 12px;
     letter-spacing: 1.5px;
   }
 
