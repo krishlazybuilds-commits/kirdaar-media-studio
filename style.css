@@ -765,6 +765,30 @@ body.curtain-active {
   width: 60px;
 }
 
+/* ── Team Divider ── */
+.team-divider {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+.team-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(193, 154, 91, 0.3), transparent);
+}
+
+.team-divider-text {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(193, 154, 91, 0.6);
+  white-space: nowrap;
+}
+
 /* ── Crew Grid (4 supporting members) ── */
 .team-crew {
   display: grid;
