@@ -1303,6 +1303,107 @@ body.curtain-active {
   width: 60px;
 }
 
+/* ===== WHAT MAKES US SPECIAL ===== */
+.special-section {
+  position: relative;
+  padding: 100px 40px;
+  overflow: hidden;
+}
+
+.special-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.special-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.special-left {
+  position: sticky;
+  top: 120px;
+}
+
+.special-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #f0e6d6;
+  line-height: 1.3;
+  margin: 20px 0 24px;
+}
+
+.special-title em {
+  font-style: italic;
+  color: #c19a5b;
+  font-weight: 400;
+}
+
+.special-text {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(240, 230, 214, 0.55);
+  margin-bottom: 20px;
+}
+
+.special-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.special-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 28px 32px;
+  background: rgba(193, 154, 91, 0.03);
+  border: 1px solid rgba(193, 154, 91, 0.1);
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+.special-feature:hover {
+  background: rgba(193, 154, 91, 0.06);
+  border-color: rgba(193, 154, 91, 0.2);
+  transform: translateX(6px);
+}
+
+.special-feature-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(193, 154, 91, 0.06);
+  border: 1px solid rgba(193, 154, 91, 0.15);
+  color: #c19a5b;
+}
+
+.special-feature-content h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: #f0e6d6;
+  margin-bottom: 8px;
+}
+
+.special-feature-content p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(240, 230, 214, 0.45);
+}
+
 /* ===== CAROUSEL ===== */
 .carousel-section {
   max-width: 1200px;
@@ -2029,6 +2130,20 @@ body::before {
 
   .contact-section {
     padding: 80px 40px;
+  }
+
+  .special-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .special-left {
+    position: static;
+  }
+
+  .special-title {
+    font-size: 34px;
+    letter-spacing: 4px;
   }
 }
 
