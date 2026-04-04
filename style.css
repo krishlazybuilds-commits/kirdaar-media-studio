@@ -661,16 +661,18 @@ body.curtain-active {
   line-height: 1.7;
 }
 
-/* ===== TEAM — PREMIUM 4-MEMBER GRID ===== */
-.team-grid-4 {
+/* ===== TEAM — 2-TIER DESIGNER LAYOUT ===== */
+
+/* ── Founders Spotlight Row (3 leads) ── */
+.team-founders {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 auto 60px;
 }
 
-.team-member {
+.team-founder {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
@@ -679,22 +681,21 @@ body.curtain-active {
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.team-member:hover {
+.team-founder:hover {
   border-color: rgba(193, 154, 91, 0.22);
   transform: translateY(-8px);
   box-shadow:
     0 24px 64px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(193, 154, 91, 0.04);
+    0 0 40px rgba(193, 154, 91, 0.06);
 }
 
-/* Portrait Image */
-.team-member-img {
+.team-founder-img {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
-.team-member-img img {
+.team-founder-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -702,13 +703,12 @@ body.curtain-active {
   transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.team-member:hover .team-member-img img {
+.team-founder:hover .team-founder-img img {
   filter: grayscale(0%) sepia(5%);
   transform: scale(1.05);
 }
 
-/* Gradient overlay on image */
-.team-member-overlay {
+.team-founder-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -718,30 +718,28 @@ body.curtain-active {
     rgba(10, 10, 10, 0.85) 100%
   );
   pointer-events: none;
-  transition: opacity 0.5s ease;
 }
 
-/* Info Section */
-.team-member-info {
+.team-founder-info {
   padding: 22px 24px 26px;
   text-align: center;
 }
 
-.team-member-info h3 {
-  font-size: 18px;
+.team-founder-info h3 {
+  font-size: 20px;
   font-weight: 400;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #f0e6d6;
   margin-bottom: 8px;
   transition: color 0.4s ease;
 }
 
-.team-member:hover .team-member-info h3 {
+.team-founder:hover .team-founder-info h3 {
   color: #c19a5b;
 }
 
-.team-member-info p {
+.team-founder-info p {
   font-size: 11px;
   font-weight: 300;
   color: rgba(193, 154, 91, 0.55);
@@ -751,12 +749,11 @@ body.curtain-active {
   transition: color 0.4s ease;
 }
 
-.team-member:hover .team-member-info p {
-  color: rgba(193, 154, 91, 0.8);
+.team-founder:hover .team-founder-info p {
+  color: rgba(193, 154, 91, 0.85);
 }
 
-/* Bottom accent line */
-.team-member-line {
+.team-founder-line {
   width: 0;
   height: 1.5px;
   background: linear-gradient(90deg, transparent, #c19a5b, transparent);
@@ -764,9 +761,86 @@ body.curtain-active {
   transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.team-member:hover .team-member-line {
+.team-founder:hover .team-founder-line {
   width: 60px;
 }
+
+/* ── Crew Grid (4 supporting members) ── */
+.team-crew {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-crew-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28px 16px;
+  border-radius: 14px;
+  background: rgba(193, 154, 91, 0.02);
+  border: 1px solid rgba(193, 154, 91, 0.06);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.team-crew-card:hover {
+  border-color: rgba(193, 154, 91, 0.18);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.team-crew-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 2px solid rgba(193, 154, 91, 0.15);
+  transition: border-color 0.4s ease;
+}
+
+.team-crew-card:hover .team-crew-img {
+  border-color: rgba(193, 154, 91, 0.4);
+}
+
+.team-crew-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(60%) sepia(8%);
+  transition: filter 0.5s ease;
+}
+
+.team-crew-card:hover .team-crew-img img {
+  filter: grayscale(0%) sepia(5%);
+}
+
+.team-crew-info h3 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #f0e6d6;
+  margin-bottom: 6px;
+  transition: color 0.4s ease;
+}
+
+.team-crew-card:hover .team-crew-info h3 {
+  color: #c19a5b;
+}
+
+.team-crew-info p {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(193, 154, 91, 0.5);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
 
 /* ===== AFFILIATED DIRECTORS — PREMIUM REDESIGN ===== */
 .ad-section {
@@ -1738,10 +1812,18 @@ body::before {
   }
 
 
-  .team-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+
+  .team-founders {
+    grid-template-columns: 1fr;
     gap: 24px;
+    max-width: 400px;
   }
+
+  .team-crew {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
 
 
   .contact-inner {
@@ -1819,12 +1901,17 @@ body::before {
   }
 
 
-  .team-grid-4 {
+
+  .team-founders {
+    gap: 20px;
+  }
+
+  .team-crew {
     gap: 16px;
   }
 
-  .team-member-info h3 {
-    font-size: 15px;
+  .team-founder-info h3 {
+    font-size: 17px;
   }
 
 
@@ -1934,10 +2021,17 @@ body::before {
   }
 
 
-  .team-grid-4 {
+
+  .team-crew {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
+
+  .team-crew-img {
+    width: 70px;
+    height: 70px;
+  }
+
 
 
   .ad-grid {
