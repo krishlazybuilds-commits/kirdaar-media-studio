@@ -1096,44 +1096,73 @@ body.curtain-active {
 /* ── Flow Line (timeline connector) ── */
 .wwd-flow-line {
   position: relative;
-  height: 20px;
+  height: 24px;
   margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  overflow: visible;
 }
 
 .wwd-flow-track {
   position: absolute;
   top: 50%;
-  left: 5%;
-  right: 5%;
+  left: 12.5%;
+  right: 12.5%;
   height: 1px;
+  transform: translateY(-50%);
   background: linear-gradient(90deg,
-    transparent,
-    rgba(193, 154, 91, 0.25) 15%,
-    rgba(193, 154, 91, 0.25) 85%,
-    transparent
+    rgba(193, 154, 91, 0.15),
+    rgba(193, 154, 91, 0.3) 30%,
+    rgba(193, 154, 91, 0.3) 70%,
+    rgba(193, 154, 91, 0.15)
   );
 }
 
 .wwd-flow-dot {
   position: absolute;
   top: 50%;
-  width: 10px;
-  height: 10px;
-  margin-left: -5px;
-  margin-top: -5px;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: rgba(193, 154, 91, 0.3);
-  border: 1.5px solid rgba(193, 154, 91, 0.5);
-  animation: wwdDotPulse 3s ease-in-out infinite;
+  background: #0a0a0a;
+  border: 2px solid rgba(193, 154, 91, 0.6);
+  box-shadow: 0 0 10px rgba(193, 154, 91, 0.2);
+  z-index: 2;
 }
 
-.wwd-flow-dot:nth-child(3) { animation-delay: 0.4s; }
-.wwd-flow-dot:nth-child(4) { animation-delay: 0.8s; }
-.wwd-flow-dot:nth-child(5) { animation-delay: 1.2s; }
+.wwd-flow-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: #c19a5b;
+  border-radius: 50%;
+}
 
-@keyframes wwdDotPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(193, 154, 91, 0.2); }
-  50% { transform: scale(1.3); box-shadow: 0 0 12px 2px rgba(193, 154, 91, 0.15); }
+.wwd-flow-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(193, 154, 91, 0.4);
+  border-radius: 50%;
+  animation: wwdNodePulse 3s ease-out infinite;
+  pointer-events: none;
+}
+
+.wwd-flow-dot:nth-child(3)::after { animation-delay: 0.4s; }
+.wwd-flow-dot:nth-child(4)::after { animation-delay: 0.8s; }
+.wwd-flow-dot:nth-child(5)::after { animation-delay: 1.2s; }
+
+@keyframes wwdNodePulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
 }
 
 /* ── Services Grid ── */
