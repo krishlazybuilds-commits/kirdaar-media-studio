@@ -128,7 +128,7 @@ let ticking = false;
 function onScroll() {
   const currentScroll = window.pageYOffset;
   const headerHeight = header.offsetHeight;
-  const offset = headerHeight + 80; // offset for comfortable detection
+  const offset = headerHeight + 40; // offset for comfortable detection
   
   // Header background change
   if (currentScroll > 50) {
@@ -157,12 +157,14 @@ function onScroll() {
     }
   }
   
-  // If at the very top, highlight Home
-  if (currentScroll < 100) {
-    const homeLink = document.querySelector('.nav-menu a[href="#"]');
-    setActiveNav(homeLink);
+  // If at the very top (no scrolling), clear all active states
+  if (currentScroll < 50) {
+    setActiveNav(null);
   } else if (currentSection) {
     setActiveNav(currentSection.link);
+  } else if (sections.length > 0) {
+    // Scrolled but no section reached threshold yet — highlight first section
+    setActiveNav(sections[0].link);
   }
   
   lastScroll = currentScroll;
@@ -186,7 +188,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (targetId === '#') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setActiveNav(this);
+      setActiveNav(null);
       return;
     }
     
