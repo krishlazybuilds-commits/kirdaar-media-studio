@@ -285,3 +285,200 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') lightboxPrev();
   if (e.key === 'ArrowRight') lightboxNext();
 });
+
+// ===== STUDIO SETS GALLERY =====
+(function() {
+  const studioCard = document.getElementById('studioSetsCard');
+  const studioGallery = document.getElementById('studioGallery');
+  const studioBackdrop = document.getElementById('studioGalleryBackdrop');
+  const studioClose = document.getElementById('studioGalleryClose');
+  const studioMainImg = document.getElementById('studioMainImg');
+  const studioThumbs = document.getElementById('studioThumbs');
+
+  if (!studioCard || !studioGallery) return;
+
+  // Studio media — images and videos
+  const studioMedia = [
+    { type: 'image', src: 'images/DSC02636.JPG', name: 'Studio Set 1' },
+    { type: 'image', src: 'images/DSC02642.JPG', name: 'Studio Set 2' },
+    { type: 'image', src: 'images/DSC02645.JPG', name: 'Studio Set 3', portrait: true },
+    { type: 'image', src: 'images/DSC02647.JPG', name: 'Studio Set 4', portrait: true },
+    { type: 'image', src: 'images/DSC02656.JPG', name: 'Studio Set 5', portrait: true },
+    { type: 'image', src: 'images/DSC02690.JPG', name: 'Studio Set 6', portrait: true },
+    { type: 'image', src: 'images/DSC02734.JPG', name: 'Studio Set 7', portrait: true },
+    { type: 'image', src: 'images/DSC02803.JPG', name: 'Studio Set 8', portrait: true },
+    { type: 'image', src: 'images/DSC02815.JPG', name: 'Studio Set 9' },
+    { type: 'video', src: 'videos/o1780-web.mp4', name: 'Behind the Scenes 1' },
+    { type: 'video', src: 'videos/o1781-web.mp4', name: 'Behind the Scenes 2' },
+    { type: 'video', src: 'videos/o1782-web.mp4', name: 'Behind the Scenes 3' },
+    { type: 'video', src: 'videos/o1783-web.mp4', name: 'Behind the Scenes 4' }
+  ];
+
+  const studioShowcase = document.getElementById('studioShowcase');
+  let currentVideoEl = null;
+
+  let studioGalleryOpen = false;
+  let currentStudioIndex = 0;
+  let zoomTimeout = null;
+
+  // Build thumbnails
+  function buildThumbs() {
+    studioThumbs.innerHTML = '';
+    studioMedia.forEach((item, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'studio-gallery-thumb' + (i === 0 ? ' active' : '');
+      if (item.type === 'video') {
+        thumb.classList.add('video-thumb');
+        thumb.innerHTML = `<video src="${item.src}" muted preload="metadata"></video>
+          <div class="thumb-play-icon">▶</div>`;
+      } else {
+        thumb.innerHTML = `<img src="${item.src}" alt="${item.name}" loading="lazy">`;
+      }
+      thumb.addEventListener('click', () => selectStudioMedia(i));
+      studioThumbs.appendChild(thumb);
+    });
+  }
+
+  let autoAdvanceTimer = null;
+  const IMAGE_DISPLAY_TIME = 5000; // 5 seconds per image
+
+  function clearAutoAdvance() {
+    clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = null;
+  }
+
+  function advanceToNext() {
+    if (!studioGalleryOpen) return;
+    const nextIndex = (currentStudioIndex + 1) % studioMedia.length;
+    selectStudioMedia(nextIndex, true);
+  }
+
+  function selectStudioMedia(index, isAuto) {
+    currentStudioIndex = index;
+    const item = studioMedia[index];
+
+    // Clear previous auto-advance
+    clearAutoAdvance();
+
+    // Cleanup previous video if any
+    if (currentVideoEl) {
+      currentVideoEl.removeEventListener('ended', advanceToNext);
+      currentVideoEl.pause();
+      currentVideoEl.remove();
+      currentVideoEl = null;
+    }
+
+    // Fade out
+    studioMainImg.style.opacity = '0';
+    studioMainImg.classList.remove('zooming');
+    clearTimeout(zoomTimeout);
+
+    // Toggle portrait/landscape mode
+    if (item.portrait) {
+      studioShowcase.classList.add('portrait');
+    } else {
+      studioShowcase.classList.remove('portrait');
+    }
+
+    setTimeout(() => {
+      if (item.type === 'video') {
+        // Hide the img, show a video element
+        studioMainImg.style.display = 'none';
+        const video = document.createElement('video');
+        video.src = item.src;
+        video.autoplay = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.className = 'studio-gallery-main-video';
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'contain';
+        video.style.borderRadius = '8px';
+        studioShowcase.appendChild(video);
+        currentVideoEl = video;
+        // Advance when video ends
+        video.addEventListener('ended', advanceToNext);
+      } else {
+        // Show image
+        studioMainImg.style.display = '';
+        studioMainImg.src = item.src;
+        studioMainImg.alt = item.name;
+        studioMainImg.style.objectFit = item.portrait ? 'contain' : 'cover';
+        studioMainImg.style.opacity = '1';
+        // Ken Burns slow zoom
+        zoomTimeout = setTimeout(() => {
+          studioMainImg.classList.add('zooming');
+        }, 100);
+        // Auto-advance after display time
+        autoAdvanceTimer = setTimeout(advanceToNext, IMAGE_DISPLAY_TIME);
+      }
+    }, 300);
+
+    // Update active thumb & scroll into view
+    studioThumbs.querySelectorAll('.studio-gallery-thumb').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+      if (i === index) {
+        t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    });
+  }
+
+  // Preload all images into browser cache
+  function preloadMedia() {
+    studioMedia.forEach(item => {
+      if (item.type === 'image') {
+        const preload = new Image();
+        preload.src = item.src;
+      }
+    });
+  }
+
+  function openStudioGallery() {
+    studioGalleryOpen = true;
+    preloadMedia();
+    buildThumbs();
+    selectStudioMedia(0);
+    studioGallery.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeStudioGallery() {
+    studioGalleryOpen = false;
+    clearAutoAdvance();
+    studioGallery.classList.remove('active');
+    document.body.style.overflow = '';
+    studioMainImg.classList.remove('zooming');
+    clearTimeout(zoomTimeout);
+    // Cleanup video
+    if (currentVideoEl) {
+      currentVideoEl.removeEventListener('ended', advanceToNext);
+      currentVideoEl.pause();
+      currentVideoEl.remove();
+      currentVideoEl = null;
+    }
+    studioMainImg.style.display = '';
+  }
+
+  // Event listeners
+  studioCard.addEventListener('click', openStudioGallery);
+  studioCard.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openStudioGallery();
+    }
+  });
+
+  studioClose.addEventListener('click', closeStudioGallery);
+  studioBackdrop.addEventListener('click', closeStudioGallery);
+
+  document.addEventListener('keydown', (e) => {
+    if (!studioGalleryOpen) return;
+    if (e.key === 'Escape') closeStudioGallery();
+    if (e.key === 'ArrowRight') {
+      selectStudioMedia((currentStudioIndex + 1) % studioMedia.length);
+    }
+    if (e.key === 'ArrowLeft') {
+      selectStudioMedia((currentStudioIndex - 1 + studioMedia.length) % studioMedia.length);
+    }
+  });
+})();

@@ -360,7 +360,7 @@
                 <p>Cinema cameras, lighting rigs, audio gear &mdash; everything owned and operated by our team.</p>
               </div>
             </div>
-            <div class="special-feature fade-in">
+            <div class="special-feature special-feature--studio fade-in" id="studioSetsCard" role="button" tabindex="0" aria-label="View our studio sets gallery">
               <div class="special-feature-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
               </div>
@@ -368,6 +368,13 @@
                 <h4>Our Own Studio Sets</h4>
                 <p>Custom-built studio environments designed for every production need &mdash; no rental overhead.</p>
               </div>
+              <!-- Hover shimmer overlay -->
+              <div class="studio-card-shimmer"></div>
+              <!-- Click hint -->
+              <span class="studio-card-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                View Gallery
+              </span>
             </div>
             <div class="special-feature fade-in">
               <div class="special-feature-icon">
@@ -640,6 +647,31 @@
     <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
     </button>
+  </div>
+
+  <!-- STUDIO SETS GALLERY MODAL -->
+  <div class="studio-gallery" id="studioGallery">
+    <div class="studio-gallery-backdrop" id="studioGalleryBackdrop"></div>
+    <div class="studio-gallery-container">
+      <div class="studio-gallery-header">
+        <div class="studio-gallery-title-block">
+          <span class="studio-gallery-label">Our Studio</span>
+          <h2 class="studio-gallery-title">Studio Sample</h2>
+        </div>
+        <button class="studio-gallery-close" id="studioGalleryClose" aria-label="Close gallery">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="studio-gallery-body">
+        <div class="studio-gallery-showcase" id="studioShowcase">
+          <img class="studio-gallery-main-img" id="studioMainImg" src="" alt="Studio Set">
+          <div class="studio-gallery-main-overlay"></div>
+        </div>
+        <div class="studio-gallery-thumbs" id="studioThumbs">
+          <!-- Thumbnails get populated by JS -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
